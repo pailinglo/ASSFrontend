@@ -1,3 +1,8 @@
+<div class="col-sm-6">
+  <ul class="list-group">
 
-<app-feature name="weight"></app-feature>
-<app-feature name="exercise"></app-feature>
+    <app-feature *ngFor="let feature of f1" [feature]="feature"></app-feature>
+    
+  </ul>
+  <button class="btn btn-primary" routerLink="/features/edit-feature/1">Add</button>
+</div>

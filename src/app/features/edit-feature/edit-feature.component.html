@@ -1,0 +1,21 @@
+<div class="card">
+    <div class="card-header">
+        <h3>Edit Feature</h3>
+    </div>
+    <div class="card-body">
+        <div class="form-group">
+            <label for="feature.name"></label>
+            <input [(ngModel)]="feature.name" type="text" id="feature.name"/>
+        </div>
+        <div class="form-group">
+            <!-- <ng-select 
+                [items]="items"
+                multiple=false
+                [(ngModel)="feature.type" ]></ng-select> -->
+        </div>
+    </div>
+    <div class="card-footer">
+        <button class="btn-primary">Save</button>
+        <button class="btn-secondary">Cancel</button>
+    </div>
+</div>

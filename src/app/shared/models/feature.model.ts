@@ -1,0 +1,15 @@
+
+export enum FeatureType{
+
+  Numerical = 1,
+  Binary = 2,
+  Categorical = 3
+}
+
+export class Feature {
+  id: string;
+  name: string;
+  type: FeatureType;
+  
+}
+
