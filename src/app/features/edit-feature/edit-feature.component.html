@@ -5,17 +5,16 @@
     <div class="card-body">
         <div class="form-group">
             <label for="feature.name"></label>
-            <input [(ngModel)]="feature.name" type="text" id="feature.name"/>
+            <input class="form-control" [(ngModel)]="feature.name" type="text" id="feature.name" placeholder="Enter the feature name"/>
         </div>
         <div class="form-group">
-            <!-- <ng-select 
-                [items]="items"
-                multiple=false
-                [(ngModel)="feature.type" ]></ng-select> -->
+            <ng-select [(ngModel)]="featureType" class="form-control">
+                <ng-option *ngFor="let key of keys" [value]="key">{{featureTypes[key]}}</ng-option>
+            </ng-select>
         </div>
     </div>
     <div class="card-footer">
-        <button class="btn-primary">Save</button>
-        <button class="btn-secondary">Cancel</button>
+        <button class="btn-primary" (click)="save()">Save</button>
+        <button class="btn-secondary" (click)="cancel()">Cancel</button>
     </div>
 </div>

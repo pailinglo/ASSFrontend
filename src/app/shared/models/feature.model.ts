@@ -7,7 +7,7 @@ export enum FeatureType{
 }
 
 export class Feature {
-  id: string;
+  id: number;
   name: string;
   type: FeatureType;
   

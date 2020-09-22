@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Feature } from '../models/feature.model';
 import { Observable } from 'rxjs';
 
@@ -22,6 +22,28 @@ export default class FeatureService {
   get(featureId: string): Observable<Feature>{
     return this.http.get<Feature>(`${this.API}/feature/${featureId}`);
     
+  }
+
+  //can either save an existing or add a new feature
+  save(feature: Feature): Observable<Feature>{
+    
+    let result: Observable<Feature>;
+    //what does this mean? instead of feature.id == ""
+    if(feature.id){
+      feature.type = +feature.type; //convert to number or will have error
+      result = this.http.put<Feature>(`${this.API}/feature/${feature.id}`,feature);
+    }
+    //add a new feature
+    else{
+      result = this.http.post<Feature>(`${this.API}/feature/`,feature);      
+    }
+    return result;
+  }
+
+  remove(featureId:string){
+
+    return this.http.delete(`${this.API}/feature/${featureId}`);
+
   }
 
   //  getAll(): Observable < Array < SugarLevel >> {

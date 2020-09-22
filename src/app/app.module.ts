@@ -13,7 +13,7 @@ import FeatureService from './shared/api/feature.service';
 import { EditFeatureComponent } from './features/edit-feature/edit-feature.component';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-// import { NgSelectModule } from '@ng-select/ng-select';
+import { NgSelectModule } from '@ng-select/ng-select';
 
 @NgModule({
   declarations: [
@@ -30,7 +30,7 @@ import { CommonModule } from '@angular/common';
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    // NgSelectModule,
+    NgSelectModule,
     CommonModule
   ],
   providers: [
