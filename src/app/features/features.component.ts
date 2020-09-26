@@ -13,6 +13,8 @@ export class FeaturesComponent implements OnInit, OnDestroy {
 
   f1: Array<Feature>;
   sub: Subscription;
+  addMode: boolean = false;
+  workspaceId: number;
 
 
   constructor(
@@ -38,11 +40,37 @@ export class FeaturesComponent implements OnInit, OnDestroy {
         obs.subscribe((response) => {
           console.log("Get response from HttpClient");
           this.f1 = response;
-
+          this.workspaceId = workspaceId;
           console.log(response)
         });
       }
 
     });
+  }
+
+  add(){
+    this.addMode = true;
+  }
+
+  cancelAdd(){
+    this.addMode = false;
+  }
+
+  addFeature(save:boolean){
+
+    this.addMode = false;
+    if(save){
+      //refresh the component to show the added feature.
+      this.ngOnInit();
+      console.log("save clicked in child component");
+    }
+    else{
+      console.log("cancel clicked in child component");
+    }
+  }
+
+  featureRemoved(){
+    this.ngOnInit();
+    console.log("feature removed / parent side");
   }
 }

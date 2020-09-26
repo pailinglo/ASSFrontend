@@ -28,44 +28,26 @@ export default class FeatureService {
   save(feature: Feature): Observable<Feature>{
     
     let result: Observable<Feature>;
-    //what does this mean? instead of feature.id == ""
-    if(feature.id){
+    
+    console.log(feature);
+    if(feature.id>0){
+      console.log("PUT requested");
       feature.type = +feature.type; //convert to number or will have error
       result = this.http.put<Feature>(`${this.API}/feature/${feature.id}`,feature);
     }
     //add a new feature
     else{
+      console.log("POST requested");
       result = this.http.post<Feature>(`${this.API}/feature/`,feature);      
     }
     return result;
   }
 
-  remove(featureId:string){
+  remove(featureId:number){
 
     return this.http.delete(`${this.API}/feature/${featureId}`);
 
   }
 
-  //  getAll(): Observable < Array < SugarLevel >> {
-  //    return this.http.get<Array<SugarLevel>>(this.SUGARLEVELS_API);
-  //  }
-  //  get(id: string) {
-  //    return this.http.get(`${this.SUGARLEVELS_API}/${id}`);
-  //  }
-  //  save(sugarLevel: SugarLevel): Observable < SugarLevel > {
-  //    let result: Observable<SugarLevel>;
-  //    if(sugarLevel.id) {
-  //    result = this.http.put<SugarLevel>(
-  //      `${this.SUGARLEVELS_API}/${sugarLevel.id}`,
-  //      sugarLevel
-  //    );
-  //  } else {
-  //    result = this.http.post<SugarLevel>(this.SUGARLEVELS_API, sugarLevel);
-  //  }
-  //  return result;
-  //}
-  //remove(id: number) {
-  //  return this.http.delete(`${this.SUGARLEVELS_API}/${id.toString()}`);
-  //}
-
+  
 }

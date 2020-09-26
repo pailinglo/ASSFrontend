@@ -10,6 +10,6 @@ export class Feature {
   id: number;
   name: string;
   type: FeatureType;
-  
+  workspaceId: number;
 }
 

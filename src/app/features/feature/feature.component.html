@@ -1,6 +1,29 @@
 
-  <li class="list-group-item d-flex justify-content-between align-items-center">
-    {{feature.name}}
-    <span class="badge badge-primary badge-pill">{{featureType}}</span>
-    
+  <li class="list-group-item align-items-center">
+    <div *ngIf="!editMode" class="d-flex">
+        <div class="mr-auto">{{feature.name}}</div>
+        <div>
+        <a (click)="edit()"><i class="material-icons">mode_edit</i></a>
+        <a (click)="remove()"><i class="material-icons">remove_circle</i></a>
+        <span *ngIf="removeMode">Are you sure to remove this feature?
+          <a (click)="confirmRemove()">YES</a>&nbsp;
+          <a (click)="cancelRemove()">NO</a>
+        </span>
+        <span class="badge badge-primary badge-pill">{{featureType}}</span>
+      </div>
+    </div>
+    <div *ngIf="editMode">
+      <!-- <app-edit-feature featureId={{feature.id}}></app-edit-feature> -->
+      <div class="form-group">
+        <label for="feature.name"></label>
+        <input class="form-control" [(ngModel)]="feature.name" type="text" id="feature.name" placeholder="Enter the feature name"/>
+      </div>
+      <div class="form-group">
+          <ng-select [(ngModel)]="selected" class="form-control">
+              <ng-option *ngFor="let item of items" [value]="item.id">{{item.name}}</ng-option>
+          </ng-select>
+      </div>
+      <button class="btn-primary" (click)="save()">Save</button>
+      <button class="btn-secondary" (click)="cancel()">Cancel</button>
+    </div>
   </li>
